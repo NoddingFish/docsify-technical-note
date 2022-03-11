@@ -57,7 +57,7 @@
 >
 > 以下是该 `Gitbook` 文档所使用的 `book.json` ：
 
-[import](../book.json)
+[book](../book.json ':include :type=code')
 
 
 
