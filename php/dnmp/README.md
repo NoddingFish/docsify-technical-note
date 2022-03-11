@@ -187,7 +187,7 @@ log-error               = /var/lib/mysql/mysql.error.log
             --volume $(pwd):/app \
             composer "$@"
     }
-
+    
     ```
 3. 让文件起效：
     ```
@@ -210,7 +210,7 @@ log-error               = /var/lib/mysql/mysql.error.log
             }
         }
     }
-
+    
     ```
 
 ## 7.数据库管理

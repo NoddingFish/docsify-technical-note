@@ -1,6 +1,6 @@
-# 前置环境
+# 学习资料
 
-#### 一、安装
+## 安装
 
 ##### `windows` 安装 `node`： [官方网址]( https://nodejs.org/en/ )
 
@@ -30,7 +30,7 @@ npm_mirror: https://npm.taobao.org/mirrors/npm/
 
 
 
-#### 二、创建 `vue` 项目	
+## 创建 `vue` 项目	
 
 ##### 命令行的方式
 
