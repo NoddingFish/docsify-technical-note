@@ -1,52 +1,56 @@
 # Gitbook 常用插件
 
-在 `book.json` 中的 `plugins` 中加入：
+!> 在 `book.json` 中的 `plugins` 中加入：
 
-1. ### Gitbook 的不同主题配色方案
 
-   ```json
-   "theme-default": {
-       "showLevel": true
-     },
-   "plugins": ["theme-comscore"],
-   ```
 
-2. ### expandable-chapters-small 可扩展导航章节
+#### Gitbook 的不同主题配色方案
 
-   支持多层目录，比 [Toggle Chapters](https://plugins.gitbook.com/plugin/toggle-chapters) 好用，点击箭头才能实现收放目录。不如 `chapter-fold` 好用。
+```json
+{
+    "theme-default": {
+        "showLevel": true
+      },
+	"plugins": ["theme-comscore"],
+}
+```
 
-   ```json
-   {
-       "plugins": [
-            "expandable-chapters-small"
-       ]
-   }
-   ```
+#### expandable-chapters-small 可扩展导航章节
 
-3. ### chapter-fold 导航目录折叠
+支持多层目录，比 [Toggle Chapters](https://plugins.gitbook.com/plugin/toggle-chapters) 好用，点击箭头才能实现收放目录。不如 `chapter-fold` 好用。
 
-   支持多层目录，点击导航栏的标题名就可以实现折叠扩展。
+```json
+{
+    "plugins": [
+         "expandable-chapters-small"
+    ]
+}
+```
 
-   ```json
-   {
-       "plugins": ["chapter-fold"]
-   }
-   ```
+#### chapter-fold 导航目录折叠
 
-4. ### github 在右上角添加github图标
+支持多层目录，点击导航栏的标题名就可以实现折叠扩展。
 
-   ```json
-   {
-       "plugins": [ 
-           "github" 
-       ],
-       "pluginsConfig": {
-           "github": {
-               "url": "https://github.com/zhangjikai"
-           }
-       }
-   }
-   ```
+```json
+{
+    "plugins": ["chapter-fold"]
+}
+```
+
+#### github 在右上角添加github图标
+
+```json
+{
+    "plugins": [ 
+        "github" 
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/zhangjikai"
+        }
+    }
+}
+```
 
 
 > [!TIP]

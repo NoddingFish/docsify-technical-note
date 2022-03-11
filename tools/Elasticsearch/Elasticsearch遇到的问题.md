@@ -1,6 +1,6 @@
 # Elasticsearch遇到的问题
 
-##### 1、分页查询，页数很大时，遇到 `max_result_window` 的问题：
+#### 1、分页查询，页数很大时，遇到 `max_result_window` 的问题：
 
 查询报错：
 
@@ -55,7 +55,7 @@ curl -XGET 192.168.16.186:30001/index/_settings # index 是查询指定索引，
 
 
 
-##### 2、Data too large
+#### 2、Data too large
 
 解决方法一：
 
@@ -71,11 +71,5 @@ curl  -H "Content-Type:application/json" -XPOST 'http://192.168.16.186:30001/_ca
 
 解决方法二：
 
-```html
-elasticsearch 默认的 jvm 堆内存大小是 1G ，需要根据自己的机器的场景设置：
-
-一般最大不能超过 32G ，和不能超过物流内存的 50%
-
-设置完成，重启 elasticsearch 即可
-```
+?> `elasticsearch` 默认的 `jvm` 堆内存大小是 `1G` ，需要根据自己的机器的场景设置：一般最大不能超过 `32G` ，和不能超过物流内存的 `50%` 设置完成，重启 `elasticsearch` 即可
 

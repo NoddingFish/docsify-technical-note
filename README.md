@@ -1,18 +1,18 @@
-# 技术笔记
+# 笔记 :notebook:
 
 ?> 记录平时工作和学习中遇到的一些注意点，便于自己查找。
 
 ##### 需要学习的内容：
 
-- `Laravel`
-- `Swoole`
-- `Elasticsearch`
-- `websocket`
-- `workerman`
-- `Golang`
-- `Vue`
-- `Docker`
-- `Jenkins`
+> - `Laravel`
+> - `Swoole`
+> - `Elasticsearch`
+> - `websocket`
+> - `workerman`
+> - `Golang`
+> - `Vue`
+> - `Docker`
+> - `Jenkins`
 
 
 

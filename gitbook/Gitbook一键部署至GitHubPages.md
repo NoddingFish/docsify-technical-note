@@ -1,6 +1,6 @@
 # Gitbook 一键部署至 GitHub Pages
 
-### 将书籍部署到 gh-pages 分支
+#### 将书籍部署到 gh-pages 分支
 
 > 参考：[Gitbook 一键部署至 GitHub Pages](https://blog.csdn.net/simplehouse/article/details/78766513)
 
@@ -18,7 +18,11 @@
    $ gh-pages -d _book
    ```
 
-### 附加
+
+
+---
+
+#### 附加
 
 #### 1、如果安装速度**太慢**，建议使用淘宝 `npm` 镜像：
 

@@ -4,7 +4,7 @@
 
 ##### Docker 中下载并允许 Jenkins
 
-```
+```shell
 docker run ^
   -u root ^
   --rm ^

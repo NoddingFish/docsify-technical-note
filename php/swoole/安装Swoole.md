@@ -2,9 +2,9 @@
 
 Swoole 是 PHP 的一个扩展，可以通过 PHP 扩展的方式进行安装和启用。
 
-### 本地安装
+#### 本地安装
 
-#### 1、Laradock
+##### 1、Laradock
 
 在本地安装的话，以 Laradock 为例，需要在 `laradock` 目录下的 `.env`  中将下面两行配置值设置为 `true` ：
 
@@ -23,7 +23,7 @@ $ docker-compose build php-fpm workspace
 
 
 
-#### 2、Windows/Mac
+##### 2、Windows/Mac
 
 如果是本地 Windows/Mac 系统上安装的话，直接执行以下命令安装接口：
 
@@ -37,7 +37,7 @@ $ pecl install swoole
 
 ---
 
-### 线上安装
+#### 线上安装
 
 如果是在服务器安装的话，以 Ubuntu 系统为例，通过执行下列命令安装即可：
 
