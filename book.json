@@ -1,12 +1,12 @@
 {
-  "title" : "技术笔记 · Gitbook",
-  "author" : "打盹的鱼",
-  "description" : "记录平时工作和学习中遇到的一些注意点",
+  "title" : "title",
+  "author" : "author",
+  "description" : "描述",
   "language" : "zh-hans",
   "gitbook" : "3.2.3",
   "links" : {
     "sidebar" : {
-      "个人网站" : "http://www.whxuran.cn"
+      "title" : "http://www.xxxxx.com"
     }
   },
   "theme-default": {
@@ -44,7 +44,7 @@
       "theme": "coffee"
     },
     "tbfed-pagefooter": {
-      "copyright":"Copyright &copy whxuran.cn 2019",
+      "copyright":"Copyright &copy xxxxx.com 2019",
       "modify_label": "该文件修订时间：",
       "modify_format": "YYYY-MM-DD HH:mm:ss"
     },
