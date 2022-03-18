@@ -3,6 +3,10 @@
 > [参考](https://blog.csdn.net/u013984781/article/details/102454730)
 >
 > [对线面试官](https://javainterview.gitee.io/luffy)
+>
+> [MySQL 数据库面试题有哪些？](https://www.zhihu.com/question/486105337/answer/2269843039)
+>
+> [面试题系列：Redis 夺命连环11问](https://zhuanlan.zhihu.com/p/368770382)
 
 ####  是否有领导经验
 
