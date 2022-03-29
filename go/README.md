@@ -17,6 +17,5 @@ func main() {
 执行以上代码输出：
 
 ```shell
-$ go run hello.go 
-Hello, World!
+go run hello.go # 输出：Hello, World!
 ```
