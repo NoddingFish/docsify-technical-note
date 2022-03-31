@@ -36,6 +36,8 @@
   * [ElasticStack](tools/ElasticStack/README.md)
     * [ElasticSearch](tools/ElasticStack/ElasticSearch.md)
     * [Kibana](tools/ElasticStack/Kibana.md)
+    * [Filebeat](tools/ElasticStack/Filebeat.md)
+    * [Logstash](tools/ElasticStack/Logstash.md)
   * [Jenkins](tools/Jenkins/README.md)
     * [Jenkins安装](tools/Jenkins/Jenkins安装.md)
 * [Gitbook](gitbook/README.md)
