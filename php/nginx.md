@@ -1,6 +1,12 @@
-# Nginx 常见问题
+# Nginx
 
-#### 1、Nginx转发的服务请求头header中不能含有下划线
+ `Nginx` 是一个高性能的 `HTTP` 和反向代理 `web` 服务器
+
+
+
+## 常见问题
+
+### 1、Nginx转发的服务请求头header中不能含有下划线
 
 > <https://www.cnblogs.com/huchong/p/10246031.html>
 
