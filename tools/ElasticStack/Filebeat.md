@@ -56,3 +56,30 @@ processors:
 
 
 
+## Grok
+
+样例数据：
+
+```tex
+2022-03-31 10:02:29 INFO 17.0.0.1 7b2u3nshjs62j2934 记录 returnHandle & [{"is_success":false,"sub_code":"","message":"Undefined index: express"},"sync"]
+```
+
+ `Grok` 模式：
+
+```grok
+%{TIMESTAMP_ISO8601:created} %{GREEDYDATA:log_level} %{IP:ip} %{WORD:request_id} %{GREEDYDATA:tag} & %{GREEDYDATA:jsons}
+```
+
+得到结构化数据：
+
+```json
+{
+  "jsons": "[{\"is_success\":false,\"sub_code\":\"\",\"message\":\"Undefined index: express\"},\"sync\"]",
+  "created": "2022-03-31 10:02:29",
+  "ip": "17.0.0.1",
+  "log_level": "INFO",
+  "tag": "记录 returnHandle",
+  "request_id": "7b2u3nshjs62j2934"
+}
+```
+

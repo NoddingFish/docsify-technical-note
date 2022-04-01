@@ -1,5 +1,3 @@
-# 学习资料
-
 ## 安装
 
 ##### `windows` 安装 `node`： [官方网址]( https://nodejs.org/en/ )
@@ -30,7 +28,7 @@ npm_mirror: https://npm.taobao.org/mirrors/npm/
 
 
 
-## 创建 `vue` 项目	
+#### 创建 `vue` 项目
 
 ##### 命令行的方式
 
@@ -56,3 +54,27 @@ alias vue='winpty vue.cmd'
 ```
 
 重新启动 `Git Bash` 即可。
+
+
+
+## 常见问题
+
+#### Expected indentation of 0 spaces but found 2 & Missing space before function parentheses
+
+> [学习地址 ：https://blog.csdn.net/shaotaiban1097/article/details/90452001 ]( https://blog.csdn.net/shaotaiban1097/article/details/90452001 )
+
+在 `.eslintrc.js` 文件中的 `rules` 中添加：
+
+```json
+{
+    "no-tabs": "off",
+    "indent": "off",
+    "space-before-function-paren": 0
+}
+```
+
+之后**重新启动**任务即可：
+
+```shell
+npm run dev
+```

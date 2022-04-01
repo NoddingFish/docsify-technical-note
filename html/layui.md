@@ -1,6 +1,28 @@
-# Layui 使用过程中注意点
+# Layui
 
-##### 1、如果 `layui` 数据表格列宽自适应出现横向滚动条的解决方案：
+ `Layui` 经典模块化前端 UI 框架
+
+> [layuiAdmin pro v1.x 开发者文档](https://noddingfish.github.io/gitbook-technical-note/html/layui/layuiadmin.html)
+
+
+
+## 组件
+
+### 1、formSelects 4.x 多选下拉框
+
+> [formSelects-v4.js 基于Layui的多选解决方案](https://hnzzmsf.github.io/example/example_v4.html)
+
+
+
+### 2、Dtree 树形组件
+
+> [dtree 数据树文档 - layui.dtree](http://www.wisdomelon.com/DTreeHelper)
+
+
+
+## 常见问题
+
+### 1、如果 `layui` 数据表格列宽自适应出现横向滚动条的解决方案：
 
 正常情况下，自适应的列宽不会导致 table 容器出现滚动条。如果你的出现了，请按照下述方案解决：
 
@@ -28,7 +50,7 @@
 
 
 
-##### 2、`Layui` 第三方组件： `formSelects 4.x`
+### 2、`Layui` 第三方组件： `formSelects 4.x`
 
 引入后需要渲染：
 
@@ -40,7 +62,7 @@ formSelects.render();
 
 
 
-##### 3、`Layui` 中弹出层的 `btn` 提交 `form` 表单；
+### 3、`Layui` 中弹出层的 `btn` 提交 `form` 表单；
 
 ###### 思路：
 
@@ -81,7 +103,7 @@ admin.popup({
 
 
 
-##### 4、表格中使用下拉选择框
+### 4、表格中使用下拉选择框
 
 增加的 `css` 样式：
 
@@ -110,11 +132,11 @@ admin.popup({
 
 效果如图所示：
 
-![1562135097510](../../images/1562135097510.png)
+![1562135097510](D:\Gitbook\docsify-technical-note\images\1562135097510.png)
 
 
 
-##### 5、`Layui` 阻止冒泡
+### 5、`Layui` 阻止冒泡
 
 `html` 增加点击事件阻止冒泡，复选框需要注意：
 
@@ -134,7 +156,9 @@ $(".stopBubble").off('click').on('click', function (that) {
 });
 ```
 
-##### 6、 `Layui` 中 `checkbox` ，`form.render()` 问题
+
+
+### 6、 `Layui` 中 `checkbox` ，`form.render()` 问题
 
 > 参考：https://www.jianshu.com/p/370d2a18fd91
 
