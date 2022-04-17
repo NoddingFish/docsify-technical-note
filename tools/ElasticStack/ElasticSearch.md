@@ -207,8 +207,8 @@ GET _cat/indices # 查看所有的数据集
    解决方法二：
 
    ?> `elasticsearch` 默认的 `jvm` 堆内存大小是 `1G` ，需要根据自己的机器的场景设置：一般最大不能超过 `32G` ，和不能超过物流内存的 `50%` 设置完成，重启 `elasticsearch` 即可
-   
-3.  `Killed` 
+
+3. ###  `Killed` 
 
    ```shell
    ./bin/elasticsearch # 启动后立马报错 killed （已杀死）
@@ -221,5 +221,90 @@ GET _cat/indices # 查看所有的数据集
    -Xms512m
    -Xmx512m
    ```
+
+4. ### 分片数量超过限制
+
+   报错信息： `Validation Failed: 1: this action would add [1] total shards, but this cluster currently has [1000]/[1000] maximum shards open;`
+
+   ?>  `elasticsearch7` 版本及以上的，默认只允许 `1000` 个分片，因为集群分片数不足引起的。
+
+   解决：
+
+   ```shell
+   # curl -XGET http://localhost:9200/_cluster/settings -u elastic:{password}
+   # {"persistent":{},"transient":{}}
+   
+   curl -XPUT http://es-host:es-port/_cluster/settings -H "Content-Type:application/json" -d '{"transient":{"cluster":{"max_shards_per_node":10000}}}' 
+   ```
+
+   返回：
+
+   ```json
+   {"acknowledged":true,"persistent":{},"transient":{"cluster":{"max_shards_per_node":"10000"}}}
+   ```
+
+5. ###  `@timestamp` 时间格式
+
+   > [ES 中时间日期类型 “yyyy-MM-dd HH:mm:ss” 的完全避坑指南](https://blog.csdn.net/wlei0618/article/details/123712605)
+
+   ```json
+   # ES 查询：2022-04-11T22:24:20+0800 Kibana 查询：Apr 11, 2022 @ 22:24:20.000
+   POST log/_doc
+   {
+     "request_id":"100001",
+     "@timestamp":"2022-04-11T22:24:20+0800"
+   }
+   
+   # ES 查询：2022-04-11T22:24:20Z Kibana 查询：Apr 12, 2022 @ 06:24:20.000
+   POST log/_doc
+   {
+     "request_id":"100002",
+     "@timestamp":"2022-04-11T22:24:20Z"
+   }
+   ```
+
+    `ES` 查询接口分别是：
+
+   ```json
+   [
+       {
+           "_index" : "log",
+           "_id" : "hIRLGYABEzLZI1HCphCT",
+           "_score" : 1.0,
+           "_source" : {
+               "request_id" : "100001",
+               "@timestamp" : "2022-04-11T22:24:20+0800"
+           }
+       },
+       {
+           "_index" : "log",
+           "_id" : "hYRPGYABEzLZI1HCqRDr",
+           "_score" : 1.0,
+           "_source" : {
+               "request_id" : "100002",
+               "@timestamp" : "2022-04-11T22:24:20Z"
+           }
+       }
+   ]
+   ```
+
+    `Kibana` 查询结果分别是：
+
+   ```json
+   [
+       {
+           "request_id" : "100001",
+           "@timestamp" : "Apr 11, 2022 @ 22:24:20.000"
+       },
+       {
+           "request_id" : "100002",
+           "@timestamp" : "Apr 12, 2022 @ 06:24:20.000"
+       }
+   ]
+   ```
+
+   
+
+   
 
    

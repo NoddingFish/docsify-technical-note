@@ -26,6 +26,7 @@
     * [Kibana](tools/ElasticStack/Kibana.md)
     * [Filebeat](tools/ElasticStack/Filebeat.md)
     * [Logstash](tools/ElasticStack/Logstash.md)
+  * [Docker](tools/docker.md)
   * [Supervisor](tools/supervisor.md)
   * [Jenkins](tools/jenkins.md)
   * [Gitbook](tools/gitbook.md)
