@@ -1,6 +1,6 @@
-### 常见问题
+## 常见问题
 
-1. #### 代理问题
+1. ### 代理问题
 
    提示：
 
@@ -18,6 +18,21 @@
 
    ```shell
    git config --global --unset http.proxy
+   ```
+
+2. ###  `OpenSSL`
+
+   提示：
+
+   ```shell
+   fatal: unable to access 'https://github.com/NoddingFish/docsify-technical-note.git/': Failed to connect to github.com port 443: Timed out
+   ```
+
+   解决：
+
+   ```shell
+   git config http.sslVerify "false"
+   git config --global http.sslVerify "false"
    ```
 
    
