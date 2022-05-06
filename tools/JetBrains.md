@@ -1,4 +1,4 @@
-# PhpStorm使用
+# JetBrains IDEA 使用
 
 1. ##  `Terminal` 中使用 `git-bash`
 

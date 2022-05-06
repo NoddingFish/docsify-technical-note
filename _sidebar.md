@@ -9,7 +9,6 @@
   * [Nginx](php/nginx.md)
   * [Apache](php/apache.md)
   * [Swoole](php/swoole.md)
-  * [PhpStorm](php/phpstorm.md)
 * Go
   * [Golang](go/go.md)
   * [Beego](go/beego.md)
@@ -28,6 +27,7 @@
     * [Logstash](tools/ElasticStack/Logstash.md)
   * [Docker](tools/docker.md)
   * [Git](tools/git.md)
+  * [JetBrains](tools/JetBrains.md)
   * [Supervisor](tools/supervisor.md)
   * [Jenkins](tools/jenkins.md)
   * [Gitbook](tools/gitbook.md)
