@@ -132,7 +132,7 @@ admin.popup({
 
 效果如图所示：
 
-![1562135097510](D:\Gitbook\docsify-technical-note\images\1562135097510.png)
+![1562135097510](layui.assets/1562135097510.png)
 
 
 

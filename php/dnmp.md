@@ -52,7 +52,7 @@ DNMP项目特点：
 ```
 结构示意图：
 
-![Demo Image](../../images/dnmp.png)
+![Demo Image](dnmp.assets/dnmp.png)
 
 
 ## 2.快速使用

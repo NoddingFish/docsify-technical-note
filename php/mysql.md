@@ -6,13 +6,13 @@
 
 ## 常见问题
 
-### 1、Navicat 连接 MySQL 8 出现 2059 错误
+### 1、`Navicat` 连接 `MySQL 8` 出现 2059 错误
 
 ##### 错误：
 
-使用Navicat Premium 连接MySQL时出现如下错误：
+使用 `Navicat Premium` 连接 `MySQL` 时出现如下错误：
 
-![2059](../..//images/20190408093327.png)
+![2059](mysql.assets/20190408093327.png)
 
 ##### 原因：
 
