@@ -1,6 +1,8 @@
 # JetBrains IDEA 使用
 
-1. ##  `Terminal` 中使用 `git-bash`
+## PHPStorm
+
+1. ### `Terminal` 中使用 `git-bash`
 
    打开 `phpstorm` 设置，修改 Tooles -> Terminal 中的 Shell path 为：
 
@@ -16,15 +18,15 @@
    export LC_ALL="zh_CN.UTF-8"
    ```
 
-2. ## 字符串语言注入
+2. ### 字符串语言注入
 
    在字符串上按 `Alt + Enter` 选择语言注入，选中要注入的语言，设置后字符串会显示对应语言的格式，再次按 `Alt + Enter` 可以在单独窗口编辑字符串。
 
-3. ## 将代码装进 `if` `try/catch` 等语句中
+3. ### 将代码装进 `if` `try/catch` 等语句中
 
    windows: `Ctrl + Alt + T`
 
-4. ## 书签
+4. ### 书签
 
    普通书签： `F11`
 
@@ -32,6 +34,31 @@
 
    书签列表： `Shift + F11`
 
-5. ##  `AceJump` 插件
+5. ###  `AceJump` 插件
 
    `Ctrl + ;`
+
+
+
+## DataGrip
+
+1. ###  `Show Aggregate View` 
+
+   1. #### 时间戳转时间格式
+
+   ```groovy
+   ROWS.each { row ->
+     COLUMNS.each { column ->
+       def value = row.value(column)
+       if (value instanceof Number) {
+          Date date = new Date(value * 1000)
+          OUT.append(date.toString() + "\n")
+       }
+       else {
+         OUT.append("Value is not a number" + "\n")
+       }
+     }
+   }
+   ```
+
+   
