@@ -1,0 +1,400 @@
+请求登录接口：
+接口请求参数：{'country': 86, 'cellphone': '15827465958', 'password': 'wufly1217', 'captcha': '', 'remember': 1, 'platform': 3, 'appid': 1, 'source': ''}
+----------------------------------------
+请求获取课程列表接口：
+接口请求参数：{'desc': 'true', 'expire': 1, 'last_learn': 0, 'learn_status': 0, 'prev': 0, 'size': 20, 'sort': 1, 'type': '', 'with_learn_count': 1}
+----------------------------------------
+请求获取文章列表接口：
+接口请求参数：{'cid': 100046101, 'size': 100, 'prev': 0, 'order': 'earliest', 'sample': 'false'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 195652, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 195662, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 195675, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 199663, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 200717, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 201700, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 202772, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 204472, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 205784, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 206274, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 207426, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 208182, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 209130, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 209450, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 210887, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 229975, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 232412, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 237340, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 237950, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 212394, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 213872, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 215116, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 215640, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 217049, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 218093, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 218938, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章列表接口：
+接口请求参数：{'cid': 100002201, 'size': 100, 'prev': 0, 'order': 'earliest', 'sample': 'false'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 181, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 183, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 185, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 281, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 285, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 288, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 291, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 471, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 294, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 540, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 297, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+抓取达到37次了，先暂停 10s 再继续。
+请求用户认证接口：
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 675, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 693, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 730, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 862, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 995, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 997, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1059, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1064, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 865, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2440, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1411, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1505, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1512, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1513, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1604, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1609, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 1610, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2080, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2421, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 301, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 303, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2017, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2711, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2723, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2729, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2741, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2748, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2751, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2752, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 2754, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 3912, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 3917, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 3926, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4050, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4086, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4087, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4121, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+抓取达到37次了，先暂停 10s 再继续。
+请求用户认证接口：
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4241, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4245, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4252, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 4253, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5175, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5819, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5909, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5920, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 6086, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 6283, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 6282, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 7036, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 7045, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 7047, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 7086, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5197, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5363, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5438, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5612, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5623, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 5636, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 8136, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 8216, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 8217, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 8700, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 8701, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 8887, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 8888, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 9369, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 9759, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 9851, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 10216, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 10301, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 10603, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 10604, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 11232, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 11116, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+抓取达到37次了，先暂停 10s 再继续。
+请求用户认证接口：
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 11665, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 11669, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 12271, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 12389, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 12486, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 12561, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 13067, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 13069, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 13191, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 13192, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 14271, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 14321, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 14360, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 14380, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+请求获取文章信息接口：
+接口请求参数：{'id': 14389, 'include_neighbors': 'true', 'is_freelyread': 'true'}
+----------------------------------------
+正常抓取完成。
