@@ -4,7 +4,7 @@
 
 * [**开篇**](README.md)
 * [Geek](geek/README.md)
-  * [左耳听风](geek/左耳听风/*.md)
+  * [左耳听风](geek/左耳听风/开篇词%20%20_%20%20洞悉技术的本质，享受科技的乐趣.md)
 
 * [**PHP**](php/README.md)
   * [DNMP](php/dnmp.md)
