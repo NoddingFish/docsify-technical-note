@@ -3,9 +3,6 @@
 
 
 * [**开篇**](README.md)
-* [Geek](geek/README.md)
-  * [左耳听风](geek/左耳听风/开篇词%20%20_%20%20洞悉技术的本质，享受科技的乐趣.md)
-
 * [**PHP**](php/README.md)
   * [DNMP](php/dnmp.md)
   * [MySQL](php/mysql.md)
@@ -30,6 +27,8 @@
   * [Supervisor](tools/supervisor.md)
   * [Jenkins](tools/jenkins.md)
   * [Gitbook](tools/gitbook.md)
+* [**BOOK**](book/README.md)
+  * [【左耳听风】](book/左耳听风/开篇词%20%20_%20%20洞悉技术的本质，享受科技的乐趣.md)
 * [**面试题**](面试题/README.md)
   * [PHP](面试题/php.md)
   * [网络](面试题/网络.md)
