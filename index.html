@@ -21,7 +21,9 @@
       // autoHeader: true,
       // mergeNavbar: true,
       subMaxLevel: 3,
-      loadNavbar: true,//配置导航
+      loadNavbar: true,// 配置导航
+      auto2top: true,// 切换页面后是否自动跳转到页面顶部。
+      topMargin: 120,
 
       search: 'auto', // 默认值
 
@@ -66,6 +68,11 @@
         // 匹配到的字符串将被用来识别索引
         pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/,
 
+      },
+      progress: {
+        position: "top",
+        color: "var(--theme-color,#42b983)",
+        height: "3px",
       }
     }
   </script>
@@ -75,6 +82,7 @@
   <script src="./static/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="./static/docsify/lib/plugins/emoji.min.js"></script>
   <script src="./static/docsify/lib/plugins/search.min.js"></script>
+  <script src="./static/docsify/lib/plugins/progress.min.js"></script>
 
   <!-- 代码高亮 -->
   <script src="./static/prismjs/components/prism-bash.min.js"></script>
