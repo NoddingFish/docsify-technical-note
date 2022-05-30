@@ -55,7 +55,7 @@ tar -zxvf canal.deployer-1.1.6.tar.gz -C ./canal # 解压到指定文件夹下
 
 tar -zxvf jdk-8u202-linux-x64.tar.gz -C JDK/ # 解压 目录是 /root/JDK
 
-vi /etc/profile # 添加 JAVA 相关变量，如下：
+vi /etc/profile # ~/.bash_profile 添加 JAVA 相关变量，如下：
 ```
 
 ```properties
@@ -67,7 +67,7 @@ export PATH=$JAVA_HOME/bin:$JRE_HOME/bin/$JAVA_HOME:$PATH
 ```
 
 ```bash
-source /etc/profile # 刷新环境变量
+source /etc/profile # source ~/.bash_profile 刷新环境变量
 
 java -version
 #[root@iZbp1a8nvld17ybfu7cemtZ ~]# java -version
@@ -96,3 +96,132 @@ show binary logs;
 > https://github.com/alibaba/canal/wiki/QuickStart
 >
 > https://github.com/alibaba/canal/tree/canal-1.1.6
+>
+> [Canal高可用架构部署](https://mp.weixin.qq.com/s/QwvmxqxXirjf-J6mqYY44Q)
+>
+> [全量同步Elasticsearch方案之Canal](https://zhuanlan.zhihu.com/p/360631964)
+
+
+
+### FAQ / 常见问题解答
+
+1. 启动 canal 报错
+
+   ```log
+   2022-05-30 13:49:43.647 [destination = example , address = rm-bp108fv564w70h289wo.mysql.rds.aliyuncs.com/47.111.55.63:3306 , EventParser] ERROR c.a.o.c.p.inbound.mysql.rds.RdsBinlogEventParserProxy - dump address rm-bp108fv564w70h289wo.mysql.rds.aliyuncs.com/47.111.55.63:3306 has an error, retrying. caused by 
+   com.google.common.util.concurrent.UncheckedExecutionException: com.alibaba.fastjson2.JSONException: read field error : clientDatas
+   	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2218) ~[guava-22.0.jar:na]
+   	at com.google.common.cache.LocalCache.get(LocalCache.java:4147) ~[guava-22.0.jar:na]
+   	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:4151) ~[guava-22.0.jar:na]
+   	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:5140) ~[guava-22.0.jar:na]
+   	at com.google.common.collect.MigrateMap$MigrateConcurrentMap.get(MigrateMap.java:68) ~[canal.common-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.meta.MemoryMetaManager.listAllSubscribeInfo(MemoryMetaManager.java:72) ~[canal.meta-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.parse.index.MetaLogPositionManager.getLatestIndexBy(MetaLogPositionManager.java:52) ~[canal.parse-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.parse.index.FailbackLogPositionManager.getLatestIndexBy(FailbackLogPositionManager.java:68) ~[canal.parse-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.parse.inbound.mysql.MysqlEventParser.findStartPositionInternal(MysqlEventParser.java:416) ~[canal.parse-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.parse.inbound.mysql.MysqlEventParser.findStartPosition(MysqlEventParser.java:358) ~[canal.parse-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.parse.inbound.AbstractEventParser$1.run(AbstractEventParser.java:191) ~[canal.parse-1.1.6.jar:na]
+   	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_202]
+   Caused by: com.alibaba.fastjson2.JSONException: read field error : clientDatas
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:92) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.ObjectReader2.readObject(ObjectReader2.java:241) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.JSON.parseObject(JSON.java:258) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.otter.canal.common.utils.JsonUtils.unmarshalFromString(JsonUtils.java:51) ~[canal.common-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.meta.FileMixedMetaManager.loadDataFromFile(FileMixedMetaManager.java:175) ~[canal.meta-1.1.6.jar:na]
+   	at com.alibaba.otter.canal.meta.FileMixedMetaManager.loadClientIdentity(FileMixedMetaManager.java:225) ~[canal.meta-1.1.6.jar:na]
+   	at com.google.common.collect.MigrateMap$1.load(MigrateMap.java:23) ~[canal.common-1.1.6.jar:na]
+   	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3708) ~[guava-22.0.jar:na]
+   	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2416) ~[guava-22.0.jar:na]
+   	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2299) ~[guava-22.0.jar:na]
+   	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2212) ~[guava-22.0.jar:na]
+   	... 11 common frames omitted
+   Caused by: com.alibaba.fastjson2.JSONException: read field error : cursor
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:92) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.ObjectReader2.readObject(ObjectReader2.java:243) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.ObjectReaderImplList.readObject(ObjectReaderImplList.java:435) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:90) ~[fastjson2-2.0.4.jar:na]
+   	... 21 common frames omitted
+   Caused by: com.alibaba.fastjson2.JSONException: read field error : identity
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:92) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.ObjectReader2.readObject(ObjectReader2.java:241) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:90) ~[fastjson2-2.0.4.jar:na]
+   	... 24 common frames omitted
+   Caused by: com.alibaba.fastjson2.JSONException: read field error : sourceAddress
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:92) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.ObjectReader2.readObject(ObjectReader2.java:243) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:90) ~[fastjson2-2.0.4.jar:na]
+   	... 26 common frames omitted
+   Caused by: com.alibaba.fastjson2.JSONException: create instance error, class java.net.InetSocketAddress
+   	at com.alibaba.fastjson2.reader.ObjectReaderAdapter.createInstance0(ObjectReaderAdapter.java:178) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.ObjectReaderAdapter.createInstance(ObjectReaderAdapter.java:233) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.ObjectReaderBean.readObject(ObjectReaderBean.java:162) ~[fastjson2-2.0.4.jar:na]
+   	at com.alibaba.fastjson2.reader.FieldReaderObjectMethod.readFieldValue(FieldReaderObjectMethod.java:90) ~[fastjson2-2.0.4.jar:na]
+   	... 28 common frames omitted
+   ```
+
+   解决方法：
+
+   先停止 `canal` ，把 `conf->example->meta.dat` 文件删除，再重启 `canal` ;
+   重启会重新生成 `meta.dat` 文件,所记录的最新 `binlog` 文件和位置
+
+   
+
+```shell
+# insert
+================> binlog[mysql-bin.002686 : 257880],name[test_suyoda_net,auth_center_sub_role], eventType: INSERT
+id : 12  update= true
+uid : 1  update= true
+name : XR测试2  update= true
+status : 1  update= true
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105,29  update= true
+================> binlog[mysql-bin.002686 : 258066],name[test_suyoda_net,auth_center_sub_role], eventType: INSERT
+id : 13  update= true
+uid : 1  update= true
+name : XR测试3  update= true
+status : 1  update= true
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105,29  update= true
+
+
+# update
+================> binlog[mysql-bin.002686 : 264579],name[test_suyoda_net,auth_center_sub_role], eventType: UPDATE
+-------> before
+id : 13  update= false
+uid : 1  update= false
+name : XR测试3  update= false
+status : 1  update= false
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105,29  update= false
+-------> after
+id : 13  update= false
+uid : 1  update= false
+name : XR测试3  update= false
+status : 1  update= false
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105,30  update= true
+================> binlog[mysql-bin.002686 : 264838],name[test_suyoda_net,auth_center_sub_role], eventType: UPDATE
+-------> before
+id : 12  update= false
+uid : 1  update= false
+name : XR测试2  update= false
+status : 1  update= false
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105,29  update= false
+-------> after
+id : 12  update= false
+uid : 1  update= false
+name : XR测试2  update= false
+status : 1  update= false
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105  update= true
+
+# delete
+================> binlog[mysql-bin.002686 : 266562],name[test_suyoda_net,auth_center_sub_role], eventType: DELETE
+id : 13  update= false
+uid : 1  update= false
+name : XR测试3  update= false
+status : 1  update= false
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105,30  update= false
+================> binlog[mysql-bin.002686 : 266748],name[test_suyoda_net,auth_center_sub_role], eventType: DELETE
+id : 12  update= false
+uid : 1  update= false
+name : XR测试2  update= false
+status : 1  update= false
+menu_ids : 96,25,26,97,98,99,100,101,102,103,104,27,28,105  update= false
+```
+
