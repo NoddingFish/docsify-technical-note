@@ -42,9 +42,9 @@
 
 ## DataGrip
 
-1. ###  `Show Aggregate View` 
+1. ### Show Aggregate View 
 
-   1. #### 时间戳转时间格式
+   #### 时间戳转时间格式
 
    ```groovy
    ROWS.each { row ->
@@ -61,4 +61,8 @@
    }
    ```
 
-   
+2. ### 快速查看表格
+
+   - 按 `Ctrl + N` →键入表的名称，然后按 `Enter` 键；
+   - 如果光标上脚本内表的名称，按 `F4` 两次；
+   - 如果您在控制台中，键入 `SELECT * FROM` 的快速方法是键入 `sel` 并按 `Tab` 键，然后放置表的名称并运行查询。
