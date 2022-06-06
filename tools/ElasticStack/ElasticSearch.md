@@ -141,7 +141,7 @@ GET _cat/indices # 查看所有的数据集
 
 ## 常见问题
 
-1. ###  `max_result_window` 
+1. ###   max_result_window
 
    分页查询，页数很大时，遇到 `max_result_window` 的问题查询报错：
 
@@ -190,7 +190,7 @@ GET _cat/indices # 查看所有的数据集
    }
    ```
 
-2. ###  `Data too large`
+2. ###   Data too large
 
    解决方法一：
 
@@ -208,7 +208,7 @@ GET _cat/indices # 查看所有的数据集
 
    ?> `elasticsearch` 默认的 `jvm` 堆内存大小是 `1G` ，需要根据自己的机器的场景设置：一般最大不能超过 `32G` ，和不能超过物流内存的 `50%` 设置完成，重启 `elasticsearch` 即可
 
-3. ###  `Killed` 
+3. ###   Killed
 
    ```shell
    ./bin/elasticsearch # 启动后立马报错 killed （已杀死）
@@ -243,7 +243,7 @@ GET _cat/indices # 查看所有的数据集
    {"acknowledged":true,"persistent":{},"transient":{"cluster":{"max_shards_per_node":"10000"}}}
    ```
 
-5. ###  `@timestamp` 时间格式
+5. ###   @timestamp 时间格式
 
    > [ES 中时间日期类型 “yyyy-MM-dd HH:mm:ss” 的完全避坑指南](https://blog.csdn.net/wlei0618/article/details/123712605)
 
