@@ -1,5 +1,7 @@
 # JetBrains IDEA 使用
 
+> [**激活码**](http://idea.hicxy.com/?t=dg)
+
 ## PHPStorm
 
 1. ### `Terminal` 中使用 `git-bash`
