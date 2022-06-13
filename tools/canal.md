@@ -399,7 +399,9 @@ curl http://127.0.0.1:8091/etl/es7/mytest_user.yml -X POST
 
    
 
-2. #### 启动 adapter 报错：`Illegal character in scheme name at index 0: 47.105.210.200:30001`
+2. #### 启动 adapter 报错：`Load canal adapter: es7 failed`
+
+   ##### `Illegal character in scheme name at index 0: 47.105.210.200:30001`
 
    ```log
    2022-06-07 15:07:02.291 [Thread-2] ERROR c.a.o.canal.adapter.launcher.loader.CanalAdapterLoader - Load canal adapter: es7 failed
@@ -412,6 +414,14 @@ curl http://127.0.0.1:8091/etl/es7/mytest_user.yml -X POST
    ##### 解决方法：
 
    `application.yml` 下的 `canalAdapters->outerAdapters->hosts` 修改为： `http://47.105.210.200:30001` 。
+
+   ##### `Load canal adapter: es7 failed`
+
+   ##### 解决方法：
+
+   `application.yml` 下的 `canalAdapters->outerAdapters` 增加参数： `outerAdapterKey: exampleKey` ；
+
+   `es7` 下的 `*.yml` 增加参数： `outerAdapterKey: exampleKey` 。
 
    
 
