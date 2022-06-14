@@ -389,6 +389,77 @@ tar -zxvf canal.adapter-1.1.6.tar.gz -C ./canal/adapter/
 curl http://127.0.0.1:8091/etl/es7/mytest_user.yml -X POST
 ```
 
+##### 配置：
+
+`conf/es7mytest_user.yml`
+
+> [enhance dbAdapter and esAdapter #4110](https://github.com/alibaba/canal/pull/4110#issue-1170531285)
+
+```yaml
+dataSourceKey: defaultDS
+# outerAdapterKey: exampleKey
+destination: example
+groupId: g1
+esMapping:
+  # _index: test_order
+  _index: stable_order
+  _id: _id
+#  upsert: true
+  # pk: id
+  sql: "select i.tid as _id,
+        i.tid,
+        o.tid as otid,
+        o.uid,
+        o.batch_no,
+        o.tp_waybill_no,
+        o.order_no,
+        o.ecp_no,
+        o.chanel_id,
+        o.created,
+        o.send_time,
+        o.status,
+        o.is_push_route,
+        o.clear_code,
+        o.channel,
+        o.is_trans,
+        o.ware_id,
+        o.order_status,
+        o.port,
+        o.order_type,
+        o.print_status,
+        o.tp_name,
+        o.main_code,
+        m.admin_id,
+        m.nick_name                                            as member_nick_name,
+        u.user_name                                            as user_user_name,
+        r.name                                                 as receiver_name,
+        r.mobile                                               as receiver_mobile,
+        concat(r.state, r.city, r.district, r.town, r.address) as receiver_address,
+        group_concat(i.name separator ';')                     as order_info_name_string,
+        FROM_UNIXTIME(c.ship_time, '%Y-%m-%dT%T+08:00')        as customs_affairs_ship_time
+        from `order_info` i
+        left join `order` o ON i.tid = o.tid
+        left join `order_receiver` r ON o.tid = r.tid
+        left join `member` m ON o.uid = m.uid
+        left join `user` u ON m.admin_id = u.uid
+        left join `customs_affairs` c on o.main_code = c.syd_code"
+#  objFields:
+#    _labels: array:;
+  # 目标表别名
+  targetOwner: i
+  # 非 DDL 中字段的需要声明
+  targetColumns:
+    - order_info_name_string
+    - customs_affairs_ship_time
+    - receiver_address
+    - member_nick_name
+    - user_user_name
+    - receiver_name
+    - receiver_mobile
+  etlCondition: "where i.tid={} group by i.tid" # group 可以写在这，不需要可以去掉
+  commitBatch: 3000
+```
+
 
 
 ## FAQ / 常见问题
