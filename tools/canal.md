@@ -284,6 +284,8 @@ go run samples/main.go
 
 # Adapter
 
+?> 全量同步时使用，增量同步可以使用 [`canal-go` 客户端](https://github.com/CanalClient/canal-go)
+
 ## 同步 ES
 
 > [ClientAdapter](https://github.com/alibaba/canal/wiki/ClientAdapter)
@@ -547,4 +549,110 @@ esMapping:
       etlCondition: "where  userid between {} and {}" #指定userid
       ```
 
-      
+6. #### 数据库中 `datetime` 默认为 `0000-00-00 00:00:00` 的问题
+
+   ?> 直接同步数据到 `ES` 中，会报错， `0000-00-00 00:00:00` 在 `mysql` 中是作为一个特殊值存在的，但 `java.sql.Date` 将其视为不合法的值，格式不正确，因此产生异常。
+
+   ##### 解决方法：
+
+   给 `jdbc  url` 加上 `zeroDateTimeBehavior` 参数：
+
+   `jdbc:mysql://localhost:3306/testdb?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true`
+
+   !> `zeroDateTimeBehavior=round` 是为了指定 `MySql` 中的 `DateTime` 字段默认值查询时的处理方式，默认是抛出异常；对于值为 `0000-00-00 00:00:00` （默认值）的纪录。
+
+   如下两种配置，会返回不同的结果：
+
+   1.  `zeroDateTimeBehavior=round` 返回： `0001-01-01 00:00:00.0` 
+   2.  `zeroDateTimeBehavior=convertToNull` 返回： `null`
+
+   在 `adapter` 中，则需要给 `config/application.yml` 中参数 `srcDataSources->defaultDS->url` 中加上：`zeroDateTimeBehavior` 参数
+
+   即为： `jdbc:mysql://xxxxxx.rds.aliyuncs.com:3306/www.test.net?useUnicode=true&zeroDateTimeBehavior=convertToNull`
+
+   再重启 `adapter` 执行：`curl -X POST http://127.0.0.1:8092/etl/es7/mytest_user.yml?params=160232195928468162`
+
+   源数据：关注字段 `send_time`
+
+   ```json
+   {
+       "_id": 160232195928468162,
+       "tid": 160232195928468162,
+       "otid": 160232195928468162,
+       "uid": 196,
+       "batch_no": "772432",
+       "tp_waybill_no": "7700182613912",
+       "order_no": "S202010108158800600",
+       "ecp_no": "1204567911244653004",
+       "chanel_id": 7,
+       "created": "2020-10-10 17:25:59",
+       "send_time": "0000-00-00 00:00:00",
+       "status": "unshiped",
+       "is_push_route": 0,
+       "clear_code": null,
+       "channel": "0",
+       "is_trans": 0,
+       "ware_id": 0,
+       "order_status": 999,
+       "port": "大连",
+       "order_type": "0",
+       "print_status": 0,
+       "tp_name": "韵达速递",
+       "main_code": "",
+       "admin_id": 119,
+       "member_nick_name": "盛太服装",
+       "user_user_name": "yewu1",
+       "receiver_name": "iGBGuXcY0NpteYEQJRR4fw==",
+       "receiver_mobile": "l8AapzMeqgBLJ+Y4iPEEM9gsxeXC+eiXCKVTVD7xro4=",
+       "receiver_address": null,
+       "order_info_name_string": "羊皮短靴S092552",
+       "customs_affairs_ship_time": null
+   }
+   ```
+
+   `ES` 导入的数据：
+
+   ```json
+   {
+       "_index" : "stable_order",
+       "_type" : "_doc",
+       "_id" : "160232195928468162",
+       "_score" : 1.0,
+       "_source" : {
+           "tid" : 160232195928468162,
+           "otid" : 160232195928468162,
+           "uid" : 196,
+           "batch_no" : "772432",
+           "tp_waybill_no" : "7700182613912",
+           "order_no" : "S202010108158800600",
+           "ecp_no" : "1204567911244653004",
+           "chanel_id" : 7,
+           "created" : "2020-10-10T17:25:59+08:00",
+           "send_time" : null,
+           "status" : "unshiped",
+           "is_push_route" : 0,
+           "clear_code" : null,
+           "channel" : "0",
+           "is_trans" : 0,
+           "ware_id" : 0,
+           "order_status" : 999,
+           "port" : "大连",
+           "order_type" : "0",
+           "print_status" : 0,
+           "tp_name" : "韵达速递",
+           "main_code" : "",
+           "admin_id" : 119,
+           "member_nick_name" : "盛太服装",
+           "user_user_name" : "yewu1",
+           "receiver_name" : "iGBGuXcY0NpteYEQJRR4fw==",
+           "receiver_mobile" : "l8AapzMeqgBLJ+Y4iPEEM9gsxeXC+eiXCKVTVD7xro4=",
+           "receiver_address" : null,
+           "order_info_name_string" : "羊皮短靴S092552",
+           "customs_affairs_ship_time" : null
+       }
+   }
+   ```
+
+   
+
+   
