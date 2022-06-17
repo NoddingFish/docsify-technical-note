@@ -25,7 +25,7 @@
 
 安装完成后，您可以开始使用 `Jenkins` ！
 
-
+![img](jenkins.assets/6464255-cc56d3af1fdd96df.png)
 
 ## 安装
 
