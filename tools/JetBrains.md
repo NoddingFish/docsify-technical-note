@@ -53,8 +53,40 @@
      COLUMNS.each { column ->
        def value = row.value(column)
        if (value instanceof Number) {
-          Date date = new Date(value * 1000)
-          OUT.append(date.toString() + "\n")
+         Date date = new Date(value * 1000)
+         // OUT.append(date.toString() + "\n")
+   
+         Integer year = date.year + 1900
+         Integer month = date.month + 1
+         Integer day = date.date
+         Integer hour = date.hours
+         Integer minute = date.minutes
+         Integer seconds = date.seconds
+   
+         String yearStr = year.toString()
+         String monthStr = month.toString()
+         String dayStr = day.toString()
+         String hourStr = hour.toString()
+         String minuteStr = minute.toString()
+         String secondsStr = seconds.toString()
+   
+         if (month < 10) {
+           monthStr = "0" + monthStr
+         }
+         if (day < 10) {
+           dayStr = "0" + dayStr
+         }
+         if (hour < 10) {
+           hourStr = "0" + hourStr
+         }
+         if (minute < 10) {
+           minuteStr = "0" + minuteStr
+         }
+         if (seconds < 10) {
+           secondsStr = "0" + secondsStr
+         }
+   
+         OUT.append(yearStr + "-" + monthStr + "-" + dayStr + " "+ hourStr + ":" + minuteStr + ":" + secondsStr + "\n")
        }
        else {
          OUT.append("Value is not a number" + "\n")
