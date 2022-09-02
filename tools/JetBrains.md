@@ -53,8 +53,12 @@
      COLUMNS.each { column ->
        def value = row.value(column)
        if (value instanceof Number) {
-         Date date = new Date(value * 1000)
+         long timeValue = value.toString().toBigDecimal() * 1000
+         // OUT.append(timeValue.toString() + "\n")
+         Date date = new Date(timeValue)
          // OUT.append(date.toString() + "\n")
+         // OUT.append(value.toString().toBigDecimal() + "\n")
+         // OUT.append((value.toString().toBigDecimal() * 1000).toString() + "\n")
    
          Integer year = date.year + 1900
          Integer month = date.month + 1
