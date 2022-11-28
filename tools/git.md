@@ -26,6 +26,24 @@
    git config --global --unset http.proxy
    ```
 
+   ?> 经过以上处理，还是经常出问题，并且我这边使用了 `Clash For Windows` 设置了代理，所以也可以使用下述方法：
+
+   报错：
+
+   ```bash
+   fatal: unable to access 'https://github.com/xiaoxian521/tauri-pure-admin.git/': Failed to connect to github.com port 443 after 21101 ms: Timed out
+   ```
+
+   解决，设置代理，端口为 `7890`：
+
+   ```bash
+   git config --global http.proxy http://127.0.0.1:7890
+   ```
+
+   ![image-20221128135720625](git.assets/image-20221128135720625.png)
+
+   
+
 2. ###  `OpenSSL`
 
    提示：
