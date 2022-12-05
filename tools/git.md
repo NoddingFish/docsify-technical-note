@@ -44,7 +44,7 @@
 
    
 
-2. ###  `OpenSSL`
+2. ### `OpenSSL`
 
    提示：
 
@@ -57,6 +57,22 @@
    ```shell
    git config http.sslVerify "false"
    git config --global http.sslVerify "false"
+   ```
+
+3. ### `Git Status` 中文显示问题
+
+   ```bash
+   git config --global core.quotepath false
+   
+   #在使用 git 1og 出现乱码上面一个设置不能解决问题需要再做以下设置
+   
+   git config --global gui.encoding utf-8
+   
+   git config --global i18n.commit.encoding utf-8
+   
+   git config --global i18n.logoutputencoding utf-8
+   
+   export LES5CHAR5ET=utf-8#添加到环境变里
    ```
 
    
