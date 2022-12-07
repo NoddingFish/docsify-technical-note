@@ -1,4 +1,5 @@
 * [**首页**](README.md)
 * [**PHP**](php/README.md)
+  * [PHP](php/php.md)
   * [dnmp](php/dnmp.md)
   * [swoole](php/swoole.md)
