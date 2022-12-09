@@ -28,9 +28,9 @@ cd /data/project
 composer create-project hyperf/hyperf-skeleton
 ```
 
-安装默认的配置
+安装默认的配置后可以启动
 
-启动
+启动命令
 
 ```shell
 php bin/hyperf.php start
