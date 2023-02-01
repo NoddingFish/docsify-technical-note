@@ -5,6 +5,8 @@
 我们使用 `Docker` 安装
 
 ```shell
+docker pull hyperf/hyperf
+
 docker pull hyperf/hyperf:8.0-alpine-v3.16-swoole
 ```
 
