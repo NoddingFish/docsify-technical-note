@@ -21,6 +21,8 @@ docker run --name hyperf \
 hyperf/hyperf:8.0-alpine-v3.16-swoole
 
 # docker run --name hyperf -v G:\Docker:/data/project -p 9501:9501 -it --privileged -u root --entrypoint /bin/sh hyperf/hyperf:8.0-alpine-v3.16-swoole
+
+#docker run --name hyperf -v D:\Docker\dnmp\www:/data/project -p 9501-9503:9501-9503/tcp -it --privileged -u root --entrypoint /bin/sh hyperf/hyperf:8.0-alpine-v3.16-swoole
 ```
 
 这样我们就进入到容器了，接下来可以使用 `Composer` 安装 `Hyperf`
