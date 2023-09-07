@@ -8,3 +8,4 @@
   * [Supervisor](tools/supervisor.md)
   * [Jenkins](tools/jenkins.md)
   * [Gitbook](tools/gitbook.md)
+  * [Linux](tools/linux.md)
