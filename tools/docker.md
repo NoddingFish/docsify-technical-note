@@ -22,7 +22,7 @@
       ```
 
 
-   
+
 
 2. ### 解决 `WSL2` 中 `Vmmem` 内存占用过大问题
 
@@ -40,3 +40,25 @@
       ```
 
    4. 然后启动 `cmd` 命令提示符，输入 `wsl --shutdown` 来关闭当前的子系统
+
+   
+
+3. 容器获取宿主机的 `IP`
+
+   ```shell
+   ip addr show
+   # 或
+   ip addr show docker0
+   
+   # 例如接口：
+   3: docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+       link/ether 02:42:2c:a0:e0:b0 brd ff:ff:ff:ff:ff:ff
+       inet 172.17.0.1/16 scope global docker0
+          valid_lft forever preferred_lft forever
+       inet6 fe80::42:2cff:fea0:e0b0/64 scope link 
+          valid_lft forever preferred_lft forever
+          
+   # 宿主机 ip 是：172.17.0.1
+   ```
+
+   
