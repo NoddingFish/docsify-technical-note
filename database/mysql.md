@@ -79,55 +79,114 @@ update test set tag_bit = tag_bit ^ (1 << 2) where id = 1;
 update test set tag_bit = tag_bit ^ (1 << 2 | 1 << 3) where id = 1; # 多个标签
 ```
 
+
+
+## 数据库常用命令
+
+```mysql
+# 使用 mysql 这个库
+mysql> use mysql;
+Database changed
+# 查看用户表
+mysql> select user,host from user;
++---------------+---------------+
+| user          | host          |
++---------------+---------------+
+| general_trade | 172.17.0.3    |
+| general_trade | 39.174.88.154 |
+| general_trade | localhost     |
+| mysql.session | localhost     |
+| mysql.sys     | localhost     |
+| root          | localhost     |
++---------------+---------------+
+6 rows in set (0.00 sec)
+# 创建用户
+mysql> create user 'tester'@'39.174.88.154' identified by 'password';
+Query OK, 0 rows affected (0.00 sec)
+# 数据库授权
+mysql> grant select on general_trade.* to 'tester'@'39.174.88.154';
+Query OK, 0 rows affected (0.00 sec)
+# 修改授权
+mysql> grant select on mysql.user to 'tester'@'39.174.88.154';
+Query OK, 0 rows affected (0.01 sec)
+```
+
+
+
+
+
 ## 常见问题
 
-### 1、`Navicat` 连接 `MySQL 8` 出现 2059 错误
+1. ### `Navicat` 连接 `MySQL 8` 出现 2059 错误
 
-##### 错误：
+   ##### 错误：
 
-使用 `Navicat Premium` 连接 `MySQL` 时出现如下错误：
+   使用 `Navicat Premium` 连接 `MySQL` 时出现如下错误：
 
-![2059](mysql.assets/20190408093327.png)
+   ![2059](mysql.assets/20190408093327.png)
 
-##### 原因：
+   ##### 原因：
 
-`mysql 8` 之前的版本中加密规则是 `mysql_native_password` ，而在 `mysql 8` 之后，加密规则是 `caching_sha2_password` 。
+   `mysql 8` 之前的版本中加密规则是 `mysql_native_password` ，而在 `mysql 8` 之后，加密规则是 `caching_sha2_password` 。
 
-##### 解决：
+   ##### 解决：
 
-更改加密规则
+   更改加密规则
 
-```mysql
-$ mysql -uroot -ppassword #登录
+   ```mysql
+   $ mysql -uroot -ppassword #登录
+   
+   > use mysql; #选择数据库
+   
+   > ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; #更改加密方式 localhost 可以是 %
+   
+   > ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; #更新用户密码 localhost 可以是 %
+   
+   > FLUSH PRIVILEGES; #刷新权限
+   ```
 
-> use mysql; #选择数据库
+   
 
-> ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; #更改加密方式 localhost 可以是 %
+2. ### Mysql 数据表中删除重复的数据，并保留其中一条数据
 
-> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; #更新用户密码 localhost 可以是 %
+   执行 `sql` ：
 
-> FLUSH PRIVILEGES; #刷新权限
-```
+   ```mysql
+   DELETE FROM `qimen_deliveryorder` WHERE `id` IN (
+   	SELECT a.`id`,`trade_id`  FROM (
+       	SELECT id,trade_id,COUNT(*) as c   FROM `qimen_deliveryorder` GROUP BY `trade_id` HAVING COUNT(*) >= 2 ORDER BY c DESC
+       ) as a 
+   )
+   ```
 
+   
 
+3. ### `Mysql binlog` 日志
 
-### 2、Mysql 数据表中删除重复的数据，并保留其中一条数据
+   ```shell
+   /www/server/mysql/bin/mysqlbinlog --start-datetime="2021-01-14 01:00:00" --stop-datetime="2021-01-14 14:00:00" /www/server/data/mysql-bin.000084 -r afind1.sql
+   ```
 
-执行 `sql` ：
+4. ### mysql数据类型字段插入空字符串自动填充为0报错
 
-```mysql
-DELETE FROM `qimen_deliveryorder` WHERE `id` IN (
-	SELECT a.`id`,`trade_id`  FROM (
-    	SELECT id,trade_id,COUNT(*) as c   FROM `qimen_deliveryorder` GROUP BY `trade_id` HAVING COUNT(*) >= 2 ORDER BY c DESC
-    ) as a 
-)
-```
+   > [mysql数据类型字段插入空字符串自动填充为0报错](https://www.52dianzi.com/category/article/37/116685.html)
+   >
+   > [MySQL模式设置方式介绍](http://www.voycn.com/article-1643)
 
+   今天将国内数据库迁移到韩国服务器上，运行项目，正常的代码写入数据库突然报错，如下：
 
+   ```tex
+   SQLSTATE[01000]: Warning: 1265 Data truncated for column 'weight_report' at row 1 (SQL: insert into `order` (`order_no`, `line_id`, `channel_id`, `goods_type_id`, `client_id`, `client_address_id`, `num`, `total_amount`, `weight_report`, `remarks`, `tid`, `batch_no`, `uid`, `first_waybill_no`, `second_waybill_no`, `size`, `order_type`, `port`, `delivery_method`, `express_type`, `status`, `label`, `created`, `consign_time`) values (, 37, 44, 0, 234, 560, 1, 0, , , 1689319743001001, 101198, 1, , , 1, , , , 1, 102, 1, 1689319743, ))
+   
+   SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'order_type' at row 1 (SQL: insert into `order` (`order_no`, `line_id`, `channel_id`, `goods_type_id`, `client_id`, `client_address_id`, `num`, `total_amount`, `weight_report`, `remarks`, `tid`, `batch_no`, `uid`, `first_waybill_no`, `second_waybill_no`, `size`, `order_type`, `port`, `delivery_method`, `express_type`, `status`, `label`, `created`, `consign_time`) values (1, 37, 44, 0, 234, 560, 1, 0, 1, 1, 1689319806001001, 101202, 1, , , 1, , , , 1, 102, 1, 1689319806, ))
+   ```
 
-### 3、 `Mysql binlog` 日志
+   处理，修改 my.ini ⽂件：
 
-```shell
-/www/server/mysql/bin/mysqlbinlog --start-datetime="2021-01-14 01:00:00" --stop-datetime="2021-01-14 14:00:00" /www/server/data/mysql-bin.000084 -r afind1.sql
-```
-
+   ```ini
+   # Set the SQL mode to strict
+   sql-mode=”STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION”
+   改为:
+   # Set the SQL mode to strict
+   sql-mode="NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+   ```
