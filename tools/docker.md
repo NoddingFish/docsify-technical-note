@@ -43,7 +43,7 @@
 
    
 
-3. 容器获取宿主机的 `IP`
+3. ### 容器获取宿主机的 `IP`
 
    ```shell
    ip addr show
@@ -61,4 +61,13 @@
    # 宿主机 ip 是：172.17.0.1
    ```
 
-   
+
+
+
+## 常用命令
+
+```shell
+# Docker 查看容器映射路径（container_name 为容器名称）
+docker inspect container_name | grep Mounts -A 20
+```
+
