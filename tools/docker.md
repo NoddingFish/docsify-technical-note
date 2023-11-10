@@ -69,5 +69,8 @@
 ```shell
 # Docker 查看容器映射路径（container_name 为容器名称）
 docker inspect container_name | grep Mounts -A 20
+
+# Linux 中启动 Docker
+systemctl start docker
 ```
 
