@@ -108,8 +108,7 @@ docker run -u root --rm -d --name=jenkins -p 8089:8080 -p 50000:50000 -v jenkins
 **将公钥拷贝到authorized_keys文件**
 
 ```shell
-shell
-复制代码cat id_rsa.pub >> authorized_keys 
+cat id_rsa.pub >> authorized_keys # 追加写入的，不放心可以复制一份再操作
 ```
 
 执行完 会生成一个`authorized_keys`文件,如下:
@@ -119,8 +118,10 @@ shell
 **将生成的authorized_keys拷贝到要连接的linux机器上的对应用户或者直接root下的.ssh文件夹下**
 
 ```shell
-shell
-复制代码scp authorized_keys root@目标及其IP:/root/.ssh
+scp authorized_keys root@目标及其IP:/root/.ssh
+
+# 如果 ssh 的端口修改了，则使用以下命令， -P 2201 则代表端口
+scp -P 2201 authorized_keys root@42.192.249.199:/root/.ssh
 ```
 
 执行上面命令 会提示你输入目标机器的密码 确定后 就会将存有`Jenkins`所在服务的公钥文件`authorized_keys`存在目标机器的`/root/.ssh`下了,并且在`Jenkins`所在服务器的`/root/.ssh`下也会新增一个`known_hosts`文件
@@ -153,13 +154,14 @@ Jenkins -->系统管理-->系统设置
 
   其他的不必配置
 
+  **如果 `ssh` 端口不是 22 ，则需要在高级中修改一下正确的端口号**
+  
   配置完成后,点击 `Test Configuation `测试一下
 
 报错:
 
-```sql
-sql
-复制代码jenkins.plugins.publish_over.BapPublisherException: Failed to add SSH key. Message [invalid privatekey: [B@ba77e81]]
+```tex
+jenkins.plugins.publish_over.BapPublisherException: Failed to add SSH key. Message [invalid privatekey: [B@ba77e81]]
 ```
 
 ![image-20210821094844397.png](jenkins.assets/0850cead5fd84e0d96f2a30a83c60cd5tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp)
@@ -167,8 +169,7 @@ sql
 当前秘钥首行
 
 ```vbnet
-vbnet
-复制代码-----BEGIN OPENSSH PRIVATE KEY——
+-----BEGIN OPENSSH PRIVATE KEY——
 ```
 
 发现如上报错 原来是因为Jenkins当前版本不支持这种秘钥格式
@@ -178,8 +179,7 @@ vbnet
 我们需要在Jenkins服务上生成指定格式的秘钥
 
 ```shell
-shell
-复制代码ssh-keygen -m PEM -t rsa -b 4096
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 说明: -m 参数指定密钥的格式，PEM是rsa之前使用的旧格式  -b 指定密钥长度。对于RSA密钥，最小要求768位，默认是2048位。
@@ -215,7 +215,7 @@ shell
 `Execute shell`里写脚本,对前端代码进行打包压缩具体代码如下:
 
 ```shell
-shell复制代码# 默认在workspace目录 既仓库的根目录
+# 默认在workspace目录 既仓库的根目录
 # 安装依赖
 npm install
 # 删除旧的dist文件
@@ -256,7 +256,7 @@ SSH Server配置:
 我们也可以去目标机器 我们刚才配置的地址上去看一下 是否有文件
 
 ```shell
-shell复制代码cd /usr/local/fe/smartmag/
+cd /usr/local/fe/smartmag/
 ll
 ```
 
@@ -297,3 +297,11 @@ echo '重启完毕'
 链接：https://juejin.cn/post/7000534516410351646
 来源：稀土掘金
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+### Jenkins（Docker）执行宿主机的脚本
+
+
+
+![image-20231111143001343](jenkins.assets/image-20231111143001343.png)
