@@ -9,3 +9,4 @@
   * [Jenkins](tools/jenkins.md)
   * [Gitbook](tools/gitbook.md)
   * [Linux](tools/linux.md)
+  * [Regex](tools/regex.md)
