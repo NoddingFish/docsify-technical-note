@@ -55,6 +55,18 @@ docker run -u root --rm -d --name=jenkins -p 8089:8080 -p 50000:50000 -v jenkins
 
 
 
+## 运行
+
+```shell
+# 启动容器
+docker start jenkins
+
+# 进入容器
+docker exec -it jenkins /bin/sh
+```
+
+
+
 ## 使用
 
 > [自动化部署Jenkins](https://blog.csdn.net/Adda_Chen/article/details/128058014)
@@ -305,3 +317,15 @@ echo '重启完毕'
 
 
 ![image-20231111143001343](jenkins.assets/image-20231111143001343.png)
+
+
+
+### 利用 `Tag` 标签部署和回滚
+
+> [jenkins利用tag标签回滚](https://blog.csdn.net/qq_42157883/article/details/124096046)
+>
+> [Jenkins+Gitlab通过脚本自动部署回滚web项目版本至服务器集群（测试环境和正式环境），图文详细](https://www.ywbj.cc/?p=615)
+
+### 使用插件 `NodeJS`
+
+> [安装nodeJs插件](https://blog.csdn.net/cm_pq/article/details/129666621)
