@@ -53,6 +53,13 @@ docker run -u root --rm -d --name=jenkins -p 8089:8080 -p 50000:50000 -v jenkins
 
 直接访问：`http://localhost:8080`
 
+**因为使用 `jenkinsci/blueocean` 镜像安装运行 `NodeJS` 插件的问题。现使用官方镜像**
+
+```shell 
+# https://hub.docker.com/r/jenkins/jenkins
+docker pull jenkins/jenkins:lts-jdk17
+```
+
 
 
 ## 运行
@@ -77,7 +84,7 @@ docker exec -it jenkins /bin/sh
 
 > [Jenkins通过Publish Over SSH实现前端项目部署到远程服务全纪录](https://juejin.cn/post/7000534516410351646)
 
-上篇文章[centos+jenkins+nginx+gitlab前端自动化部署全记录](https://juejin.cn/post/6997560212924137485)聊了通过`Jenkins` `Nginx`实现前端自动化部署的整个过程,不过上篇文章部署的场景是`Jenkins`和`Nginx`服务在一台机器上.
+上篇文章[centos+jenkins+nginx+gitlab前端自动化部署全记录](https://juejin.cn/post/6997560212924137485)聊了通过 `Jenkins` `Nginx` 实现前端自动化部署的整个过程,不过上篇文章部署的场景是`Jenkins`和`Nginx`服务在一台机器上.
 
 但是很多情况下,我们的`Jenkins`可能是单独在一台服务器,`Nginx`服务可能根据环境的不同在多台服务器上,这时就需要`Jenkins`
 
@@ -312,9 +319,11 @@ echo '重启完毕'
 
 
 
-### Jenkins（Docker）执行宿主机的脚本
+---
 
 
+
+### 执行宿主机的脚本（Docker）
 
 ![image-20231111143001343](jenkins.assets/image-20231111143001343.png)
 
@@ -326,6 +335,95 @@ echo '重启完毕'
 >
 > [Jenkins+Gitlab通过脚本自动部署回滚web项目版本至服务器集群（测试环境和正式环境），图文详细](https://www.ywbj.cc/?p=615)
 
+需要提交安装插件：`Git Parameter`
+
+![image-20231116173825386](jenkins.assets/image-20231116173825386.png)
+
+后面可以使用变量名：`$git_version`
+
+
+
+---
+
+
+
 ### 使用插件 `NodeJS`
 
 > [安装nodeJs插件](https://blog.csdn.net/cm_pq/article/details/129666621)
+>
+> [NodeJS插件问题](https://blog.zjykzj.cn/posts/5d3090aa.html)
+
+在`Jenkins`官网教程[在Docker中下载并运行Jenkins](https://jenkins.io/zh/doc/book/installing/#在docker中下载并运行jenkins)中推荐使用`jenkinsci/blueocean`，运行后发现其对于`NodeJS`的支持并不完善
+
+#### NodeJS配置
+
+由于之前已经使用镜像 `jenkins/jenkins`，并保存在卷 `jenkins_home` 中，所以已经安装了插件 `NodeJS`，具体操作参考[Jenkins\]Pipeline工程配置NodeJS环境](https://blog.zhujian.life/posts/d521b4ea.html)
+
+#### env: ‘node’: No such file or directory
+
+执行配置好的`Pipeline`工程，出现如下错误：
+
+```shell
+$ /var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin/npm install -g hexo gulp
+env: ‘node’: No such file or directory
+[Pipeline] envVarsForTool
+$ /var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin/npm install -g hexo gulp
+env: ‘node’: No such file or directory
+```
+
+#### 问题解析
+
+发现这个问题后，就手动登录了 `jenkinsci/blueocean` 镜像，在目录 `/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin/` 下找到了已下载好的 `node/npm/npx` ，执行命令时发现出错
+
+```
+bash-4.4# node
+bash: node: command not found
+```
+
+即使配置环境变量`PATH`后仍旧会出错，在网上找到不少参考，发现这是个普遍的问题，
+
+有人提议不使用 `NodeJS` 插件，而是通过手动安装 `nodejs` 的方式完成配置
+
+```bash
+apk add --no-cache nodejs
+```
+
+不过尝试后发现也不靠谱，无法成功安装 `NodeJS`，最后在网上发现一个讨论[Jenkins NodeJSPlugin node command not found](https://stackoverflow.com/questions/43307107/jenkins-nodejsplugin-node-command-not-found)，发现在`docker-apline`镜像中存在`node`依赖问题
+
+#### 解决方案
+
+使用之前的镜像 [jenkins/jenkins](https://hub.docker.com/r/jenkins/jenkins)
+
+```shell
+# 下载镜像，具体使用的版本可以自行选择
+docker pull jenkins/jenkins:lts-jdk17
+
+# 运行
+docker run -u root -d --name=jenkins -p 8089:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:lts-jdk17
+```
+
+
+
+## FAQ
+
+1. ### 打包执行 `npm run build` 报内存错误
+
+   > [打包报错JavaScript heap out of memory](https://blog.csdn.net/bigbigpigsobig/article/details/133641343)
+
+   ```shell
+   FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+    1: 0xc99970 node::Abort() [node]
+   ...
+   Aborted (core dumped)
+   Build step 'Execute shell' marked build as failure
+   Finished: FAILURE
+   ```
+
+   #### 解决方案
+
+   ```shell
+   # 执行，依据服务器内存大小来决定size，若超过了服务器内存，则设置无效
+   export NODE_OPTIONS="--max-old-space-size=8192"
+   ```
+
+   ![image-20231116163352464](jenkins.assets/image-20231116163352464.png)
