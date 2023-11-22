@@ -36,9 +36,17 @@
 
    书签列表： `Shift + F11`
 
-5. ###  `AceJump` 插件
 
-   `Ctrl + ;`
+
+### 插件推荐
+
+1. #### any-rule：常用正则表达式插件
+
+   `IDEA` 版使用： `ALT + A`
+
+2. #### AceJump
+
+   使用：`Ctrl + ;`
 
 
 
