@@ -18,16 +18,32 @@
    2. 首先关闭 `docker`
 
    3. 关闭所有发行版：
-      `wsl --shutdown`
+      ```shell
+      wsl --shutdown
+      ```
+   
+      
    
    4. 将 `docker-desktop-data` 导出到 `D:\SoftwareData\wsl\docker-desktop-data\docker-desktop-data.tar` （注意，原有的 `docker images` 不会一起导出）
-      `wsl --export docker-desktop-data D:\SoftwareData\wsl\docker-desktop-data\docker-desktop-data.tar`
+      ```shell
+      wsl --export docker-desktop-data D:\SoftwareData\wsl\docker-desktop-data\docker-desktop-data.tar
+      ```
+   
+      
    
    5. 注销 `docker-desktop-data` ：
-      `wsl --unregister docker-desktop-data`
+      ```shell
+      wsl --unregister docker-desktop-data
+      ```
+   
+      
    
    6. 重新导入 `docker-desktop-data` 到要存放的文件夹： `D:\SoftwareData\wsl\docker-desktop-data\` ：
-      `wsl --import docker-desktop-data D:\SoftwareData\wsl\docker-desktop-data\ D:\SoftwareData\wsl\docker-desktop-data\docker-desktop-data.tar --version 2`
+      ```shell
+      wsl --import docker-desktop-data D:\SoftwareData\wsl\docker-desktop-data\ D:\SoftwareData\wsl\docker-desktop-data\docker-desktop-data.tar --version 2
+      ```
+   
+      
    
       只需要迁移 `docker-desktop-data` 一个发行版就行，另外一个不用管，它占用空间很小。
    
