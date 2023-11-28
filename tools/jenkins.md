@@ -79,6 +79,8 @@ docker exec -it jenkins /bin/sh
 > [自动化部署Jenkins](https://blog.csdn.net/Adda_Chen/article/details/128058014)
 >
 > [Jenkins + Gitee(码云) 实现代码自动化构建](https://blog.csdn.net/qq_34272964/article/details/93747652)
+>
+> [:star: Jenkins操作手册 - 巨详细，一篇足矣！](https://www.cnblogs.com/gltou/p/15329634.html)
 
 ### 部署到远程服务
 
