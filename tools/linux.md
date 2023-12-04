@@ -20,3 +20,19 @@ df -lh
 find . -type f -name "*" | xargs grep "createChannelEmpower"
 ```
 
+
+
+## Q&A
+
+### 1、CURL 中特殊字符的处理
+
+> [CURL命令详解及@&特殊字符处理](https://www.cnblogs.com/eternityz/p/14392214.html)
+
+遇到的问题是，使用 `github` 的 `actions` 自动登录签到，修改了复杂密码后，使用 `Curl` 密码正常，但是一直登录不上
+
+```shell
+# cURL> 7.18.0具有选项--data-urlencode，它可以解决此问题。 使用这个，我可以简单地发送一个POST请求作为
+
+curl -d name=john --data-urlencode passwd=@31&3*J https://www.mysite.com
+```
+
