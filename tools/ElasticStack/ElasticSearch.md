@@ -141,7 +141,7 @@ GET _cat/indices # 查看所有的数据集
 
 ## 常见问题
 
-1. ###   max_result_window
+1. ### max_result_window
 
    分页查询，页数很大时，遇到 `max_result_window` 的问题查询报错：
 
@@ -304,6 +304,147 @@ GET _cat/indices # 查看所有的数据集
    ```
 
    
+
+6. ### 集群已打开最大分片数
+
+   具体报错：
+
+   `Validation Failed: 1: this action would add [1] total shards, but this cluster currently has [1502]/[1000] maximum shards open;`
+
+   ```json
+   // 示例
+   {
+       "params": {
+           "body": [
+               {
+                   "index": {
+                       "_index": "order_trade_703918102",
+                       "_type": "_doc",
+                       "_id": "3741412356055422065"
+                   }
+               },
+               {
+                   "tid": "3741412356055422065",
+                   "trade_id": "3741412356055422065",
+                   "buyer_nick": "t**",
+                   "buyer_open_uid": "AAHvbHO_AEFr0sh5MnAkqcox",
+                   "payment": "239.98",
+                   "consign_time": "1705597024",
+                   "status": "106",
+                   "tids_status_str": "106",
+                   "created": "1705597008",
+                   "pay_time": "1705597014",
+                   "end_time": "0",
+                   "modified": "1705597029",
+                   "sys_modified": "1705597029",
+                   "seller_rate": "0",
+                   "seller_flag": "0",
+                   "has_buyer_message": "0",
+                   "rate_status": "0",
+                   "refund_status": "0",
+                   "is_unpack": "0",
+                   "is_check": "1",
+                   "num": "1",
+                   "is_invoice": "0",
+                   "undelivered": "0",
+                   "is_lock": "0",
+                   "print_invoice_num": 0,
+                   "print_express_num": 0,
+                   "print_invoice_time": "0",
+                   "print_express_time": "0",
+                   "is_free": "0",
+                   "tids": "",
+                   "unpack_num": "0",
+                   "storehouse": 1,
+                   "item_count": 1,
+                   "receiver_address": "长*街道**城**园*期***",
+                   "receiver_city": "无锡市",
+                   "receiver_district": "惠山区",
+                   "receiver_state": "江苏省",
+                   "receiver_name": "皇**",
+                   "receiver_mobile": "*******7193",
+                   "is_special": "0",
+                   "seller_remarks": "",
+                   "buyer_message": "",
+                   "print_num": "",
+                   "op_res_name": "",
+                   "op_express_code": "",
+                   "is_print_express": 0,
+                   "delivery_type": 0,
+                   "delivery_status": -1,
+                   "delivery_customer_id": "",
+                   "delivery_created": 0,
+                   "delivery_get_invoice_time": 0,
+                   "delivery_batch_id": 0,
+                   "exp_delivery_type": 0,
+                   "exp_delivery_status": -1,
+                   "exp_delivery_customer_id": "",
+                   "exp_delivery_created": 0,
+                   "exp_delivery_get_invoice_time": 0,
+                   "exp_delivery_batch_id": 0,
+                   "customs_type": 1,
+                   "customs_status": -1,
+                   "customs_name": "",
+                   "customs_id_card": "",
+                   "customs_batch_id": 0,
+                   "customs_created": 0,
+                   "item_oid": "3741412356055422065",
+                   "item_num_iid": "763699226285",
+                   "item_refund_id": "0",
+                   "item_refund_status": "0",
+                   "item_outer_iid": "0",
+                   "item_status": "106",
+                   "item_title": "沃尔玛电子卡200元 沃尔玛卡密200面值 全国通用 不刷单谨防诈骗",
+                   "item_sku_id": "5255856280349",
+                   "item_outer_sku_id": "0",
+                   "item_sku_properties_name": "套餐类型:沃尔玛200元电子卡密2326开头",
+                   "item_logistics_company": "",
+                   "item_invoice_no": "",
+                   "item_is_print": "1",
+                   "product_title": "沃尔玛电子卡200元 沃尔玛卡密200面值 全国通用 不刷单谨防诈骗",
+                   "product_short_name": "",
+                   "sku_outer_iid": "",
+                   "sku_properties_name": "套餐类型:沃尔玛200元电子卡密2326开头",
+                   "sku_short_name": "",
+                   "market_stalls_product": "",
+                   "market_stalls_sku": "",
+                   "market_product": "",
+                   "market_sku": ""
+               }
+           ]
+       },
+       "response": {
+           "took": 0,
+           "errors": true,
+           "items": [
+               {
+                   "index": {
+                       "_index": "order_trade_703918102",
+                       "_type": "_doc",
+                       "_id": "3741412356055422065",
+                       "status": 400,
+                       "error": {
+                           "type": "validation_exception",
+                           "reason": "Validation Failed: 1: this action would add [1] total shards, but this cluster currently has [1502]/[1000] maximum shards open;"
+                       }
+                   }
+               }
+           ]
+       }
+   }
+   ```
+
+   增加分片，具体解决：
+
+   ```shell
+   # 增加分片
+   curl -X PUT 192.168.16.186:30001/_cluster/settings -H "Content-Type: application/json" -d '{ "persistent": { "cluster.max_shards_per_node": "3000" } }'
+   
+   # 返回：{"acknowledged":true,"persistent":{"cluster":{"max_shards_per_node":"3000"}},"transient":{}}
+   
+   # 获取集群中未分配分片的总数
+   curl -XGET http://192.168.16.186:30001/_cluster/health\?pretty | grep unassigned_shards
+   ```
 
    
 
