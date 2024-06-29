@@ -3,6 +3,7 @@
 * [**开篇**](README.md)
 * [**Go**](go/README.md)
 * [**PHP**](php/README.md)
+* [**Python**](python/README.md)
 * [**前端**](前端/README.md)
 * [**数据库**](database/README.md)
 * [**Web服务器**](webserver/README.md)

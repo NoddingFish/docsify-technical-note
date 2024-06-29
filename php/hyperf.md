@@ -118,7 +118,7 @@ docker run --name nacos \
 -p 8848:8848 \
 nacos/nacos-server
 
-# docker run --name nacos -e MODE=standalone -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=rm-bp108fv564w70h289wo.mysql.rds.aliyuncs.com -e MYSQL_SERVICE_PORT=3306 -e MYSQL_SERVICE_DB_NAME=rpc_nacos -e MYSQL_SERVICE_USER=syd_sys -e MYSQL_SERVICE_PASSWORD='1LePl9X1Z7yRNe&3' -p 8848:8848 nacos/nacos-server
+# docker run --name nacos -e MODE=standalone -e SPRING_DATASOURCE_PLATFORM=mysql -e MYSQL_SERVICE_HOST=rm-bp108fv564w70h289wo.mysql.rds.aliyuncs.com -e MYSQL_SERVICE_PORT=3306 -e MYSQL_SERVICE_DB_NAME=rpc_nacos -e MYSQL_SERVICE_USER=syd_sys -e MYSQL_SERVICE_PASSWORD='xxxxxxxxxxxxxx' -p 8848:8848 nacos/nacos-server
 ```
 
 上述命令中的 `SPRING_DATASOURCE_PLATFORM` 等入参，存在于 `/home/nacos/conf/application.properties`
